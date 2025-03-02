@@ -10,6 +10,12 @@ app.get('/', (req, res) => {
     res.send({ message: 'Hello World' });
 });
 
+// need to set this to get request from client
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    next();
+})
+
 const todos = [{
     id: 1,
     title: 'Task 1',
